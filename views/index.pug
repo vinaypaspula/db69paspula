@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p The purpose of this application is to become familiar with using pug templates to dynamically generate web pages on the server side.
+
+  button(type="button", class="btn btn-primary" onclick="update()") Press me
+  div(id="target") Display
+  a(href='books') Books
+  script. 
+      var client_count=0 
+      function update(){
+        client_count++;
+        document.getElementById("target").innerHTML=`Value now ${client_count}`
+        }
