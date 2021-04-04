@@ -1,8 +1,8 @@
 # wab69paspula
 
-The purpose of this repo is to become familiar with using pug templates to dynamically generate web pages on the server side.
+The purpose of this assignment is start working with a server side Mongo data base.
 
-Hosted at [https://wab69paspula.herokuapp.com/](https://wab69paspula.herokuapp.com/)
+Hosted at [https://db69paspula.herokuapp.com/](https://db69paspula.herokuapp.com/)
 
 Class name: Books<br>
 Attributes:<br>
