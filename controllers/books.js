@@ -27,3 +27,14 @@ res.send('NOT IMPLEMENTED: books delete DELETE ' + req.params.id);
 exports.books_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: books update PUT' + req.params.id);
 };
+// VIEWS
+// Handle a show all view
+exports.books_view_all_Page = async function(req, res) {
+    try{
+    thebooks = await books.find();
+    res.render('books', { title: 'books Search Results', results: thebooks });
+    }
+    catch(err){
+    res.error(500,`{"error": ${err}}`);
+    }
+    };
