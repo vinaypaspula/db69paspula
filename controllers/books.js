@@ -43,10 +43,19 @@ exports.books_create_post = async function (req, res) {
         res.error(500,`{"error": ${err}}`);
         }
     };
-// Handle books delete form on DELETE.
-exports.books_delete = function (req, res) {
-    res.send('NOT IMPLEMENTED: Handbag delete DELETE ' + req.params.id);
+// Handle books delete on DELETE.
+exports.books_delete = async function(req, res) {
+    console.log("delete "  + req.params.id)
+    try {
+        result = await books.findByIdAndDelete( req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
 };
+
 // Handle books update form on PUT.
 exports.books_update_put = async function(req, res) {
     console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
@@ -75,3 +84,55 @@ exports.books_view_all_Page = async function(req, res) {
     res.error(500,`{"error": ${err}}`);
     }
     };
+// Handle a show one view with id specified by query
+exports.books_view_one_Page = async function(req, res) {
+    console.log("single view for id "  + req.query.id)
+    try{
+        result = await books.findById( req.query.id)
+        res.render('booksdetail', 
+{ title: 'books Detail', toShow: result });
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+// Handle building the view for creating a books.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.books_create_Page =  function(req, res) {
+    console.log("create view")
+    try{
+        res.render('bookscreate', { title: 'books Create'});
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+// Handle building the view for updating a books.
+// query provides the id
+exports.books_update_Page =  async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+        let result = await books.findById(req.query.id)
+        res.render('booksupdate', { title: 'books Update', toShow: result });
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+// Handle a delete one view with id from query
+exports.books_delete_Page = async function(req, res) {
+    console.log("Delete view for id "  + req.query.id)
+    try{
+        result = await books.findById(req.query.id)
+        res.render('booksdelete', { title: 'books Delete', toShow: result });
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+

@@ -6,15 +6,15 @@ var books_controller = require('../controllers/books');
 /// API ROUTE ///
 // GET resources base.
 router.get('/', api_controller.api);
-/// books ROUTES ///
-// POST request for creating a books.
+/// Handbag ROUTES ///
+// POST request for creating a Handbag.
 router.post('/books', books_controller.books_create_post);
-// DELETE request to delete books.
+// DELETE request to delete Handbag.
 router.delete('/books/:id', books_controller.books_delete);
-// PUT request to update books.
+// PUT request to update Handbag.
 router.put('/books/:id', books_controller.books_update_put);
-// GET request for one books.
+// GET request for one Handbag.
 router.get('/books/:id', books_controller.books_detail);
-// GET request for list of all books.
+// GET request for list of all Handbag.
 router.get('/books', books_controller.books_list);
 module.exports = router;
