@@ -13,7 +13,7 @@ exports.books_list = async function(req, res) {
     res.error(500,`{"error": ${err}}`);
     }
     };
-// for a specific Handbag.
+// for a specific books.
 exports.books_detail = async function(req, res) {
     console.log("detail"  + req.params.id)
     try {
@@ -24,7 +24,7 @@ exports.books_detail = async function(req, res) {
         res.send(`{"error": document for id ${req.params.id} not found`);
     }
 };
-// Handle Handbag create on POST.
+// Handle books create on POST.
 exports.books_create_post = async function (req, res) {
     console.log(req.body)
     let document = new books();
@@ -78,7 +78,7 @@ exports.books_update_put = async function(req, res) {
 exports.books_view_all_Page = async function(req, res) {
     try{
     thebooks = await books.find();
-    res.render('books', { title: 'Handbag Search Results', results: thebooks });
+    res.render('books', { title: 'books Search Results', results: thebooks });
     }
     catch(err){
     res.error(500,`{"error": ${err}}`);

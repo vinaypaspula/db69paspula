@@ -4,13 +4,16 @@ block content
   h1= title
     - let books  = results
   div(class="container-fluid mt-3")
-  div(class="row")
-    each i,index in books  
+  div(class="row m-1")
+    each i in books  
+      - let destination = `dispatch(\"/books/update?id=${i._id}\")`
       div(class="col-sm-4")  #{i.name} - #{i.author} -#{i.price}
+        button.btn( class="btn-primary ml-1", onclick= destination) Update
      
   script.
      
-      function buy(itemNo)
+      function dispatch(path)
       {
-        alert(`You purchased Item ${itemNo+1}`)
+        window.location.href=path
       }
+  

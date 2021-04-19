@@ -3,7 +3,10 @@ extends layout
 block content
   h1= title
 
-   - let booksid = toShow._id
+  if (toShow == null)
+    h2 No instance to delete
+  else
+  - let booksid = toShow._id
   - let name = toShow.name
   - let author = toShow.author
   - let price = toShow.price

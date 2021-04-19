@@ -2,7 +2,9 @@ extends layout
 
 block content
   h1= title
-
+  if (toShow == null)
+    h2 No instance to delete
+  else
   - let booksid = toShow._id
   - let name = toShow.name
   - let author = toShow.author
@@ -20,22 +22,4 @@ block content
     div.row
       div(class='booksAttr mr-3') book price is:
       div #{author}
-
-  //- script.
-  //-   document.forms['booksForm'].addEventListener('submit', (event) => {
-  //-     event.preventDefault();
-  //-     // TODO do something here to show user that form is being submitted
-  //-     fetch(event.target.action, {
-  //-       method: 'PUT',
-  //-       body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-  //-     }).then((resp) => {
-  //-       return resp.json(); // or resp.text() or whatever the server sends
-  //-     }).then((body) => {
-  //-       alert("Book found")
-  //-       // TODO handle body
-  //-     }).catch((error) => {
-  //-       // TODO handle error
-  //-       alert("Failed to fetch " + error )
-  //-     });
-  //-   });
 
